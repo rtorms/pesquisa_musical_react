@@ -55,7 +55,7 @@ export default function Index() {
 
       <TextInput
         style={[styles.input, themeStyles.input]}
-        placeholder="Digite algo relacionado a música..."
+        placeholder="Digite ou fale algo relacionado a música..."
         placeholderTextColor={darkMode ? "#BBBBBB" : "#888888"}
         onChangeText={(text) => setPesquisa(text)}
         value={pesquisa}
