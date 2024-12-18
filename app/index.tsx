@@ -1,21 +1,21 @@
 import { pesquisar } from "@/service/ai/generator";
-import { styles,  dynamicStyles } from "@/styles";
+import { styles, dynamicStyles } from "@/styles";
 import { useState, useEffect } from "react";
 import { ScrollView, Switch, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { MotiView } from 'moti';
 import * as SystemUI from 'expo-system-ui'
 
 export default function Index() {
-  const [pesquisa, setPesquisa] = useState(""); 
+  const [pesquisa, setPesquisa] = useState("");
   const [resposta, setResposta] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  const themeStyles = dynamicStyles(darkMode);
+  const themeStyles = dynamicStyles(darkMode); //variável que controla modo claro/escuro
 
-  useEffect(() => {
+  useEffect(() => { //quando existe alteração na seleção do modo claro/escuro aqui é feita alteração do tema
     SystemUI.setBackgroundColorAsync(themeStyles.container.backgroundColor)
-  }, [darkMode])
+  }, [darkMode]) 
 
   const callPesquisa = async () => {
     if (pesquisa.length < 5) {
@@ -35,13 +35,11 @@ export default function Index() {
     } finally {
       setIsLoading(false);
     }
-
-
   }
 
   return (
     <View style={[styles.container, themeStyles.container]}>
-      <View style={{  flexDirection: "row", alignItems: "center", justifyContent: "flex-end", padding: 10, width: "100%"  }}>
+      <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "flex-end", padding: 10, width: "100%" }}>
         <Text style={[styles.subtitulo, themeStyles.subtitulo, { marginRight: 10 }]}>
           {darkMode ? "Modo Claro" : "Modo Escuro"}
         </Text>
@@ -56,7 +54,7 @@ export default function Index() {
       <TextInput
         style={[styles.input, themeStyles.input]}
         placeholder="Digite ou fale algo relacionado a música..."
-        placeholderTextColor={darkMode ? "#BBBBBB" : "#888888"}
+        placeholderTextColor={themeStyles.placeholder}
         onChangeText={(text) => setPesquisa(text)}
         value={pesquisa}
       />
@@ -75,7 +73,6 @@ export default function Index() {
           </MotiView>
         </ScrollView>
       )}
-
     </View>
   );
 }

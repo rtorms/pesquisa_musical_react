@@ -87,6 +87,10 @@ const dynamicStyles = (darkMode: boolean) => ({
   cardText: {
     color: darkMode ? "#CCCCCC" : "#666",
   },
+  placeholder: darkMode ? "#BBBBBB" : "#888888",
+  button: {
+    backgroundColor: "#333333",
+  }
 });
 
 // Exporte ambos

@@ -1,6 +1,8 @@
+import React, { Component } from 'react';
 const Groq = require('groq-sdk');
 
-const groq = new Groq({ apiKey: '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' });
+
+const groq = new Groq({ apiKey: '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'});
 
 
 export async function pesquisar(pesquisa: String) {
@@ -65,7 +67,7 @@ export async function pesquisar(pesquisa: String) {
         },
         {
           "role": "user",
-          "content": pesquisa
+          "content": pesquisa // entrada da nova questão 
         },
       ],
       "model": "llama-3.3-70b-versatile",
